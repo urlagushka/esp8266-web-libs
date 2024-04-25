@@ -2,13 +2,12 @@
 
 #include <Arduino.h>
 #include <espnow.h>
-#include <pin-test.hpp>
 #include <w-struct.hpp>
 
 namespace
 {
     bool status = false;
-    ws::PinResponse resp;
+    YOUR_STRUCT resp;
 
     void on_data_send(uint8_t * addr, uint8_t status){}    
     void on_data_recv(uint8_t * addr, uint8_t * data, uint8_t size)
@@ -18,13 +17,11 @@ namespace
     }
 }
 
-template< typename EXC >
-ws::Exchanger< EXC >::Exchanger(MACADDR addr):
+ws::Exchanger::Exchanger(MACADDR addr):
     addr_(addr)
 {}
 
-template< typename EXC >
-bool ws::Exchanger< EXC >::init()
+bool ws::Exchanger::init()
 {
     if (esp_now_init() != 0) return false;
     
@@ -36,14 +33,12 @@ bool ws::Exchanger< EXC >::init()
     return true;
 }
 
-template< typename EXC >
-void ws::Exchanger< EXC >::send(const EXC & data)
+void ws::Exchanger::send(const YOUR_STRUCT & data)
 {
     esp_now_send(addr_.addr, (uint8_t *) &data, sizeof(data));
 }
 
-template< typename EXC >
-EXC & ws::Exchanger< EXC >::recv()
+YOUR_STRUCT & ws::Exchanger::recv()
 {
     while (!status);
     status = false;
