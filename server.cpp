@@ -6,7 +6,7 @@ ws::Server::Server(unsigned int port, cstr ssid, cstr password):
     web_(port),
     ssid_(ssid),
     password_(password),
-    one()
+    one_()
 {}
 
 void ws::Server::connect()
