@@ -33,7 +33,7 @@ Setup page in setup() method:
 ```cpp
 #include <server.hpp> // ws::Server
 #include <w-struct.hpp> // ws::PageType
-#include <pages/pages.hpp> // page::about()
+#include <pages.hpp> // page::about()
 
 ws::Server web(port, "ssid", "password");
 
@@ -45,7 +45,7 @@ void setup()
     // creating a ws::PageType object with opcode 200, page type "text/html", page content from page::about(), additional function that called on page loads
     ws::PageType about_page__ = {200, "text/html", page::about(), empty};
     // linking about_page__ with "/about" link
-    web.setup_about_page("/about", about_page__);
+    web.setup_page("/about", about_page__);
     
     web.begin();
 }
