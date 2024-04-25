@@ -21,24 +21,17 @@ namespace ws
             Server operator=(Server &&) = delete;
             ~Server() = default;
 
-            void create_local_point();
             void connect();
             bool is_connected();
             void begin();
 
-            void setup_test_all_page(cstr link, const PageType & rhs);
-            void setup_about_page(cstr link, const PageType & rhs);
-            void setup_result_page(cstr link, const PageType & rhs);
-            void setup_status_page(cstr link, const PageType & rhs);
+            void setup_one_page(cstr link, const PageType & rhs);
 
         private:
             AsyncWebServer web_;
             cstr ssid_;
             cstr password_;
-            PageType test_all_page_;
-            PageType about_page_;
-            PageType result_page_;
-            PageType status_page_;
+            PageType one_;
     };
 }
 
