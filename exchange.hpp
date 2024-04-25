@@ -2,7 +2,6 @@
 #define EXCHANGE_HPP
 
 #include <w-struct.hpp>
-#include <pin-test.hpp>
 
 namespace ws
 {
@@ -18,8 +17,8 @@ namespace ws
             ~Exchanger() = default;
 
             bool init();
-            void send(const PinResponse & data);
-            PinResponse & recv();
+            void send(const YOUR_STRUCT & data);
+            YOUR_STRUCT & recv();
             
         private:
             MACADDR addr_;
