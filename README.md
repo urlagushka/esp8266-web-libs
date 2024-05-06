@@ -96,7 +96,7 @@ Example of creating:
 ```cpp
 #include <exchange.hpp>
 ws::MACADDR addr = {{0x00, 0x00, 0x00, 0x00, 0x00, 0x00}};
-ws::Exchanger exch(addr);
+ws::Exchanger< YOUR_STRUCT > exch(addr);
 ```
 Example of using:
 ```cpp
@@ -107,13 +107,12 @@ void setup()
 
 void loop()
 {
-    StructEXC to_send = {1, 1, 0};
+    YOUR_STRUCT to_send = {1, 1, 0};
     exch.send(to_send);
     
-    StructEXC to_recv = exch.recv(); // waiting for data
+    YOUR_STRUCT to_recv = exch.recv(); // waiting for data
 }
 ```
-You need modify source files for your own struct.
 ## w-struct.hpp // using namespace ws
 ---
 w-struct.hpp has next structs:
